@@ -11,7 +11,7 @@
            var tempStr = "";
            var temps="";
            var reg="";
-           //µÃµ½ÎÄ¼şÂ·¾¶µÄÖµ
+           //å¾—åˆ°æ–‡ä»¶è·¯å¾„çš„å€¼
             var mainpath=document.URL;
            // var path=document.all.excelpath.value+"\\"+"test.xlsx";
         //alert(document.all.excelpath.value);
@@ -19,18 +19,19 @@
         //alert(path);
          var stunum=document.getElementById("stunum").value;
           //alert(stunum);
-           //´´½¨²Ù×÷EXCELÓ¦ÓÃ³ÌĞòµÄÊµÀı
+           //åˆ›å»ºæ“ä½œEXCELåº”ç”¨ç¨‹åºçš„å®ä¾‹
            var oXL = new ActiveXObject("Excel.application");
-            //´ò¿ªÖ¸¶¨Â·¾¶µÄexcelÎÄ¼ş
-           //var oWB = oXL.Workbooks.open("C:\\Users\\Administrator\\Desktop\\»ñÈ¡excelµÄĞĞºÍÁĞ\\»ñÈ¡excelµÄĞĞºÍÁĞ\\test.xlsx");
+            //æ‰“å¼€æŒ‡å®šè·¯å¾„çš„excelæ–‡ä»¶
+           //var oWB = oXL.Workbooks.open("C:\\Users\\Administrator\\Desktop\\è·å–excelçš„è¡Œå’Œåˆ—\\è·å–excelçš„è¡Œå’Œåˆ—\\test.xlsx");
          var oWB = oXL.Workbooks.open("http://liutrees.3vkj.net/test.xlsx");
          //  var oWB = oXL.Workbooks.open("\\test.xlsx");
  
-          //²Ù×÷µÚÒ»¸ösheet(´ÓÒ»¿ªÊ¼£¬¶ø·ÇÁã)
+          //æ“ä½œç¬¬ä¸€ä¸ªsheet(ä»ä¸€å¼€å§‹ï¼Œè€Œéé›¶)
            oWB.worksheets(parseInt(num)).select();
            var oSheet = oWB.ActiveSheet;
-           //Ê¹ÓÃµÄĞĞÊı
+           //ä½¿ç”¨çš„è¡Œæ•°
          var rows =  oSheet .usedrange.rows.count; 
+	alert("dsf");
            try {
               for (var i = 2; i <= rows; i++) {
            //  if (oSheet.Cells(i, 2).value == "null" || oSheet.Cells(i, 3).value == "null") break;
@@ -41,31 +42,31 @@
                       }
               }
                if(i>rows)
-                    tempStr="²éÎŞĞÅÏ¢£¬°à¼¶ÓĞÃ»ÓĞÑ¡¶Ô£¡";
+                    tempStr="æŸ¥æ— ä¿¡æ¯ï¼Œç­çº§æœ‰æ²¡æœ‰é€‰å¯¹ï¼";
            } catch(e) {
               document.getElementById("txtArea").value = tempStr;
            }
            document.getElementById("txtArea").value = tempStr;
-           //ÍË³ö²Ù×÷excelµÄÊµÀı¶ÔÏó
+           //é€€å‡ºæ“ä½œexcelçš„å®ä¾‹å¯¹è±¡
            oXL.Application.Quit();
-            //ÊÖ¶¯µ÷ÓÃÀ¬»øÊÕ¼¯Æ÷
+            //æ‰‹åŠ¨è°ƒç”¨åƒåœ¾æ”¶é›†å™¨
            CollectGarbage();
         }
   </script>
  </head>
  
  <body align=center>
-Ñ§ºÅ£º
+å­¦å·ï¼š
 <input type="text"  id="stunum" value=""></textarea>
 <select id="sheet">
-  <option value ="1">Ó¢Óï1801</option>
-  <option value ="2">Ó¢Óï1802</option>
-  <option value ="3">´«²¥1803</option>
-  <option value ="4">ººÓï1801</option>
-  <option value ="5">ÀúÊ·1801</option>
-  <option value ="6">ÆäËû</option>
+  <option value ="1">è‹±è¯­1801</option>
+  <option value ="2">è‹±è¯­1802</option>
+  <option value ="3">ä¼ æ’­1803</option>
+  <option value ="4">æ±‰è¯­1801</option>
+  <option value ="5">å†å²1801</option>
+  <option value ="6">å…¶ä»–</option>
 </select>
-<input type="button" onclick="ReadExcel();" value="²éÑ¯">
+<input type="button" onclick="ReadExcel();" value="æŸ¥è¯¢">
 <br>
 <textarea id="txtArea" cols=50 rows=10></textarea>
  </body>
