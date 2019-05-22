@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script type="text/javascript">
+        function ReadExcel() {
+           var tempStr = "";
+           var temps="";
+           var reg="";
+           //得到文件路径的值
+            var mainpath=document.URL;
+           // var path=document.all.excelpath.value+"\\"+"test.xlsx";
+        //alert(document.all.excelpath.value);
+        var num=document.getElementById("sheet").value;
+        //alert(path);
+         var stunum=document.getElementById("stunum").value;
+          //alert(stunum);
+           //创建操作EXCEL应用程序的实例
+           var oXL = new ActiveXObject("Excel.application");
+            //打开指定路径的excel文件
+           //var oWB = oXL.Workbooks.open("C:\\Users\\Administrator\\Desktop\\获取excel的行和列\\获取excel的行和列\\test.xlsx");
+         var oWB = oXL.Workbooks.open("http://liutrees.3vkj.net/test.xlsx");
+         //  var oWB = oXL.Workbooks.open("\\test.xlsx");
+ 
+          //操作第一个sheet(从一开始，而非零)
+           oWB.worksheets(parseInt(num)).select();
+           var oSheet = oWB.ActiveSheet;
+           //使用的行数
+         var rows =  oSheet .usedrange.rows.count; 
+           try {
+              for (var i = 2; i <= rows; i++) {
+           //  if (oSheet.Cells(i, 2).value == "null" || oSheet.Cells(i, 3).value == "null") break;
+           //     var a = oSheet.Cells(i, 2).value.toString() == "undefined" ? "": oSheet.Cells(i, 2).value;
+               if(oSheet.Cells(i, 1).value.localeCompare(stunum)==0){
+               tempStr += (" " + oSheet.Cells(i, 1).value + " " + oSheet.Cells(i, 2).value + " " + oSheet.Cells(i, 3).value + " " + oSheet.Cells(i, 4).value + "\n"); 
+	break;
+                      }
+              }
+               if(i>rows)
+                    tempStr="查无信息，班级有没有选对！";
+           } catch(e) {
+              document.getElementById("txtArea").value = tempStr;
+           }
+           document.getElementById("txtArea").value = tempStr;
+           //退出操作excel的实例对象
+           oXL.Application.Quit();
+            //手动调用垃圾收集器
+           CollectGarbage();
+        }
+  </script>
+ </head>
+ 
+ <body align=center>
+学号：
+<input type="text"  id="stunum" value=""></textarea>
+<select id="sheet">
+  <option value ="1">英语1801</option>
+  <option value ="2">英语1802</option>
+  <option value ="3">传播1803</option>
+  <option value ="4">汉语1801</option>
+  <option value ="5">历史1801</option>
+  <option value ="6">其他</option>
+</select>
+<input type="button" onclick="ReadExcel();" value="查询">
+<br>
+<textarea id="txtArea" cols=50 rows=10></textarea>
+ </body>
+</html>
