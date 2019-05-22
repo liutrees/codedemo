@@ -56,7 +56,7 @@ Syntax highlighted code block
            CollectGarbage();
         }
   </script>
-
+<body>
 学号：
 <input type="text"  id="stunum" value=""></textarea>
 <select id="sheet">
@@ -70,6 +70,7 @@ Syntax highlighted code block
 <input type="button" onclick="ReadExcel();" value="查询">
 <br>
 <textarea id="txtArea" cols=50 rows=10></textarea>
+</body>
 # sdfsd
 ## Header 2
 ### Header 3
